@@ -6,6 +6,7 @@
 
                                                                                                 4/11/2024 */
 
+#include "BST.h"
 #include "Bitacora.h"
 #include "Registro.h"
 #include <iostream>
@@ -14,15 +15,15 @@ using namespace std;
 
 int main()
 {
-    Bitacora datos;
+    BST datos;
     cout << "Leyendo datos." << endl;
     datos.leer();
     cout << "Creando archivo ordenado." << endl;
     datos.archivoOrdenado();
     cout << "Archivo ordenado listo." << endl;
 
-    //Imprimir las 5 IPs con m�s accesos
-    cout << "Las 5 IPs con más accesos son:" << endl;
+    //Imprimir las 5 IPs con más accesos
+    cout << "Las 5 IPs con mas accesos son:" << endl;
     datos.TopIPs(5);
 
     return 0;

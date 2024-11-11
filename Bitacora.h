@@ -5,45 +5,49 @@
                                 Ana Maria Rodriguez Peña - A01741831
 
                                                                                                 4/11/2024 */
-#include "Registro.h"
-#include <unordered_map>
-#include <vector>
+
 #ifndef BITACORA_H
 #define BITACORA_H
+#include "Registro.h"
+#include "BST.h"
+//#include "LinkedList.h"
+#include <unordered_map>
+#include <vector>
 
-struct Nodo {
-    int count;
+struct NodoLL {
     Registro data;
-    Nodo *left,
-         *right;
+    NodoLL* next;
 
-    Nodo(Registro data){ // Complejidad: O(1) (constante)
-        count=1;
+    NodoLL(Registro data, NodoLL* next) {
         this->data=data;
-        this->left=this->right=nullptr;
+        this->next=next;
     }
+
+    NodoLL(Registro data):NodoLL(data, nullptr) {}
 };
 
 class Bitacora
 {
-    private:
+     private:
         int size;
-        Nodo* root;
-        unordered_map<string,Registro> IPsRep;
-        string getKey(Registro dato, int count);
-        void inorder(Nodo* current, ofstream& archivo);
-        Nodo* search(Registro data, Nodo* current);
+        NodoLL* head;
+        NodoLL* tail;
+        NodoLL* mergeIterativo(NodoLL* head);
+        NodoLL* split(NodoLL* head, int step);
+        NodoLL* mergeLists(NodoLL* prev, NodoLL* left, NodoLL* right);
 
     public:
         Bitacora();
 
-        void leer();
-        void archivoOrdenado();
-        bool insert(Registro data);
-        Nodo* search(Registro data);
-        void TopIPs(int n);
+        NodoLL* getHead();
+        void insertLast(Registro data);
+        void mergeSort();
+        int busqueda();
+        void recorrer(ofstream& archivo);
+        bool operator==(Registro val);
 
-        virtual ~Bitacora(); //! es necesario?
+        virtual ~Bitacora();
 };
+
 
 #endif // BITACORA_H

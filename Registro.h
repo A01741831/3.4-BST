@@ -8,6 +8,7 @@
 #ifndef REGISTRO_H
 #define REGISTRO_H
 #include <iostream>
+#include <string>
 
 using namespace std;
 

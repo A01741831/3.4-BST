@@ -7,6 +7,9 @@
                                                                                                 4/11/2024 */
 #include "Registro.h"
 #include <iostream>
+#include <vector>
+#include <algorithm>
+
 
 Registro::Registro()
 {
@@ -62,7 +65,7 @@ string Registro::getIPnum()
 
 void Registro::IPANum(string IPTemp)
 {
-    size_t IPsep[4];
+    size_t IPsep[5];
 
     IPsep[0]=IPTemp.find(".");
     for (int i=1;i<3;i++) {
@@ -83,11 +86,11 @@ void Registro::IPANum(string IPTemp)
 
 bool Registro::operator<(Registro val)
 {
-    for (int i=0;i<5;i++) {
-        if (IPnum[i]!=val.IPnum[i]) {
-            return IPnum[i]<val.IPnum[i];
+        for (int i=0;i<5;i++) {
+            if (IPnum[i]!=val.IPnum[i]) {
+                return IPnum[i]<val.IPnum[i];
+            }
         }
-    }
     return false;
 }
 
